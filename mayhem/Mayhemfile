@@ -6,3 +6,4 @@ testsuite:
 cmds:
   - cmd: /src/mayhem/fuzz_money.py
     libfuzzer: true
+    timeout: 8
