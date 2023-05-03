@@ -9,7 +9,6 @@ with atheris.instrument_imports(include=['currency_converter']):
 
 ctr = 0
 
-
 def TestOneInput(data):
     global ctr
 
@@ -22,7 +21,7 @@ def TestOneInput(data):
             currency = fdp.PickValueInList(c.currencies)
             new_currency = fdp.PickValueInList(c.currencies)
             c.convert(fdp.ConsumeFloat(), currency, new_currency)
-        except (RateNotFoundError, StopIteration):
+        except RateNotFoundError:
             return -1
         except Exception as e:
             if isinstance(e, ValueError) and 'time data' in str(e):
