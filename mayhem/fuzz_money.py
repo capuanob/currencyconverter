@@ -29,7 +29,7 @@ def TestOneInput(data):
                 return -1
             if ctr >= 50_000:
                 # We have iterated long enough for Mayhem to start up
-                raise e
+                raise
 
 
 def main():
