@@ -9,6 +9,7 @@ with atheris.instrument_imports(include=['currency_converter']):
 
 ctr = 0
 
+
 def TestOneInput(data):
     global ctr
 
@@ -24,6 +25,8 @@ def TestOneInput(data):
         except (RateNotFoundError, StopIteration):
             return -1
         except Exception as e:
+            if isinstance(e, ValueError) and 'time data' in str(e):
+                return -1
             if ctr >= 50_000:
                 # We have iterated long enough for Mayhem to start up
                 raise e
